@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package hello;
+package com.restful.controller.greeting;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -28,8 +28,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
+import com.restful.client.Application;
+
 @RunWith(SpringRunner.class)
-@SpringBootTest
+@SpringBootTest(classes = Application.class)
 @AutoConfigureMockMvc
 public class GreetingControllerTests {
 
@@ -40,15 +42,15 @@ public class GreetingControllerTests {
     public void noParamGreetingShouldReturnDefaultMessage() throws Exception {
 
         this.mockMvc.perform(get("/greeting")).andDo(print()).andExpect(status().isOk())
-                .andExpect(jsonPath("$.content").value("Hello, World!"));
+                .andExpect(jsonPath("$.message").value("Hello, World!"));
     }
 
     @Test
     public void paramGreetingShouldReturnTailoredMessage() throws Exception {
 
-        this.mockMvc.perform(get("/greeting").param("name", "Spring Community"))
+        this.mockMvc.perform(get("/greeting").param("name", "Ming"))
                 .andDo(print()).andExpect(status().isOk())
-                .andExpect(jsonPath("$.content").value("Hello, Spring Community!"));
+                .andExpect(jsonPath("$.message").value("Hello, Ming!"));
     }
 
 }

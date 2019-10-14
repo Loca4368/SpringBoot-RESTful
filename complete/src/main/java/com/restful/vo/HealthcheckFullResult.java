@@ -5,7 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TimeZone;
 
-public class HealthcheckFullResult extends HealthcheckResult{
+public class HealthcheckFullResult extends HealthcheckResult {
 	private String currentTime;
 	private String application;
 	private DateFormat dateFormat;

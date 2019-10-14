@@ -21,7 +21,7 @@ class HealthcheckController {
 
 	@GetMapping(value = "/healthcheck", produces = "application/json")
 	@ResponseBody
-	public ResponseEntity<String> healthcheck(@RequestParam(value = "format") String format) {
+	public ResponseEntity<String> healthcheckGet(@RequestParam(value = "format") String format) {
 
 		String status = "OK"; // Assume result is Ok;
 		String shortFormatValue = "short";
